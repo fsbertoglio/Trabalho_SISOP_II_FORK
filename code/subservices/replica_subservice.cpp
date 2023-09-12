@@ -52,7 +52,6 @@ int ReplicaSubservice::serverReplicaSubservice()
                 cout << "não recebeu contato dos participantes" << std::endl;
                 sessionMode = "client";
                 replica_status = "off";
-                sessionMode = "manager";
                 return -1;
             }
             else if (n < 0 && currparticipante->status == "awaken")
@@ -68,7 +67,6 @@ int ReplicaSubservice::serverReplicaSubservice()
         }
     }
     replica_status = "off";
-    sessionMode = "manager";
     return 0;
 };
 
@@ -102,7 +100,7 @@ int ReplicaSubservice::clientReplicaSubservice()
         else if (n > 0)
         {
             begin = std::chrono::steady_clock::now();
-            if (replica_packet_received.message == SYN && replica_packet_received.ip_src == MANAGER_IP_ADDRESS)
+            if (replica_packet_received.message == SYN)
             {
                 begin = std::chrono::steady_clock::now();
                 //cout << "received replica packet from ip = " << replica_packet_received.ip_src << endl;
