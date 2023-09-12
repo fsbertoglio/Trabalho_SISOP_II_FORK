@@ -51,8 +51,7 @@ void InterfaceSubservice::wakeOnLan(participante *&tabelaParticipantes,
   {
     if (participanteAtual->hostname == hostname)
     {
-      string cmd = "wakeonlan "  +
-                   participanteAtual->mac_address;
+      string cmd = "wakeonlan "+                   participanteAtual->mac_address;
       system(cmd.c_str());
       return;
     }
